@@ -6,9 +6,7 @@ int max2entier (int a, int b){
 }
 
 int max3entier (int a, int b, int c){
-  int max;
-  max=(a<b?b:a);
-  return max<c?c:max;
+  return max2entier(max2entier(a,b),c);
 }
 
 int maxtab(int tab[], int dim){
@@ -16,8 +14,8 @@ int maxtab(int tab[], int dim){
   for (i=0;i<dim;i++){
     if (max<=tab3[i])
       max=tab3[i];
-  return max;
   }
+  return max;
 }
 
 int pgcd (int a, int b){
