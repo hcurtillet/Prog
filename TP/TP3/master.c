@@ -1,5 +1,6 @@
  #include <stdio.h>
  #include <stdlib.h>
+ #include <time.h>
 #include "master.h"
 
  #define N 5
@@ -45,6 +46,7 @@ int malplace(int test[], int conf[], int n, int m) {
  */
 void init(int tab[], int n, int m) {
     int i;
+    srand(time(NULL));
     for (i = 0; i < n; i++)
         tab[i] = rand() % m;
 }
@@ -64,12 +66,12 @@ void affiche(int tab[], int n, int m) {
 
 
 void lire(int tab[], int n, int m) {
-  int i, couleur;
-    do{
-    printf("Choisissez les couleurs aux bonnes positions %d\n");
+  int i, test=1;
+  do{
+    test=1;
+    printf("Choisissez les couleurs aux bonnes positions\n");
     printf("Rouge=0 Vert=1 Bleu=2 Cyan=3 Magenta=4 Jaune=5 Blanc=6\n");
     scanf("%d %d %d %d %d",&tab[0],&tab[1],&tab[2],&tab[3],&tab[4]);
-    int test=1;
     for(i=0;i<n;i++){
       if(tab[i]<0 || tab[i]>M-1){
         test=0;
@@ -98,6 +100,7 @@ int main(){
     lire(joueur, N,M);
     mp=malplace(machine, joueur, N,M);
     bp=bienplace(machine, joueur,N);
+    affiche(joueur, N,M);
     printf("Il y a %d couleur(s) bien placée(s) et %d mal placée(s)\n",bp,mp);
   }while (bp!=N);
 }
