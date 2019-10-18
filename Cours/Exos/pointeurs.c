@@ -1,23 +1,15 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include "pointeurs.h"
 #define N 10
 
-int lecture(int tab[], int dim) {
+void lecture(int tab[], int dim) {
   int* res;
   for (res=tab; res < tab+N; res++) {
-    printf("La valeur du tableau à l'indice %p est %d\n ", res-tab , *res);
+    printf("La valeur du tableau à l'indice %ld est %d\n ", res-tab , *res);
   }
-  return 0;
 }
 
-int somme(int tab[], int dim) {
-  int somme=0, i=0;
-  for (i=0; i < dim; i++) {
-    somme += *(tab+i);
-  }
-  return somme;
-
-}
 
 void copie(int tabnew[], int tab[], int dim) {
   int i;
@@ -39,4 +31,13 @@ int main() {
   printf("La somme des éléments du tableau est %d\n ", somme(tab, N));
   copie(tab2, tab, N);
   lecture(tab2, N);
+}
+
+int somme(int tab[], int dim) {
+  int somme=0, i=0;
+  for (i=0; i < dim; i++) {
+    somme += *(tab+i);
+  }
+  return somme;
+
 }
