@@ -15,6 +15,4 @@ int main() {
     scanf("%[^\n]", chaine);
     printf("%s\n", chaine);
     printf("La longueur de la chaine est %d\n", longueurChaineInt(chaine));
-
-    return 0;
 }

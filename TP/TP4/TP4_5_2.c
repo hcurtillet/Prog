@@ -8,7 +8,7 @@ void copieChainePtr(char* s, char* sCopy) {
     *(sCopy+n)=*(s+n);
     n++;
   }
-  
+
   *(sCopy+n)=*(s+n);
 }
 
@@ -24,6 +24,4 @@ int main() {
     copieChainePtr(chaine, chaineCopy);
     printf("%s\n", chaine);
     printf("%s\n", chaineCopy);
-
-    return 0;
 }

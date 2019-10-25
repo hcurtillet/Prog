@@ -21,6 +21,4 @@ int main() {
     }
     printf("%s\n", chaine);
     printf("Le nombre d'espaces est %d\n", ChaineInt(chaine));
-
-    return 0;
 }
