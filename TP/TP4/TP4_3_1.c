@@ -19,7 +19,6 @@ int estSymetriqueTabDouble(double t[], int n){
   p1 = t;
   p2 = t+n-1;
   while( (*p1==*p2) && (p1 <= (t+n))) {
-    printf("%lf\n",*p1);
     p1++;
     p2--;
   }
