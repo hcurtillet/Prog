@@ -9,14 +9,13 @@ struct structure
 };
 int main()
 {
-    struct structure t={12, 13.23, "bonjour"};
+    struct structure t;
     FILE *fichier=NULL;
-    fichier= fopen("fichier.bin", "w+b");
+    fichier= fopen("fichier.bin", "r+b");
     if(fichier != NULL)
     {
-        fwrite(&t,sizeof(t),1,fichier);
-        fseek(fichier, sizeof(t), SEEK_SET);
-        fwrite(&t,sizeof(t),1,fichier);
+        fread(&t,sizeof(t),2,fichier);
+        printf("%d %f %s",t.valeur_1, t.valeur_2, t.chain);
     }
 
     else

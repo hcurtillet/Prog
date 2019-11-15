@@ -19,7 +19,7 @@ int main() {
         }
         fseek(filebin,chanson.id*sizeof(chanson),SEEK_SET);
         printf("chanson n %d :%d  %s \n",n, chanson.id,chanson.titre);
-        fwrite(&chanson, sizeof(chanson),5,filebin);
+        fwrite(&chanson, sizeof(chanson),1,filebin);
         n++;
     }
   }

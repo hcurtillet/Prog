@@ -3,4 +3,7 @@ typedef struct {
 int liste[NB_CH_LIST];
 int id;
 int nb;
-} PLAYLIST;
+} T_playlist;
+
+T_chanson rechercheCHANSON(
+FILE* fe, int id) ;
