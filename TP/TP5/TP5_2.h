@@ -7,3 +7,5 @@ int nb;
 
 T_chanson rechercheCHANSON(
 FILE* fe, int id) ;
+
+void fprintfPlaylist(FILE* fpl, T_playlist* pl);
