@@ -87,10 +87,10 @@ int echo( char* son, int taille, int fs, float dureeEchoSec, float attenuation, 
     for ( i=0; i < taille; i++) {
       pson=allouer_son(tailleSonFinal);
       if ( i > retard ) {
-          *(pson[i]+i)=*(son+i)+(char)(*(son+i-retard)*attenuation);
+          *(*pson+i)=*(son+i)+(char)(*(son+i-retard)*attenuation);
       }
       else {
-          *(pson[i]+i)=*(son+i);
+          *(*pson+i)=*(son+i);
       }
     }
 }
