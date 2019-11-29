@@ -29,9 +29,9 @@ int main(int argc, char * argv[]) {
     //getchar();
     //son = peigne_entier(1-pow(10,-3.0*171/1000.), 171, son1, taille1);
 
-    //printf("Ecouter un filtre dephaseur du premier signal : appuyez sur une touche\n");
-    //getchar();
-    //son = passetout(0.95,1000, son1, taille1);
+    printf("Ecouter un filtre dephaseur du premier signal : appuyez sur une touche\n");
+    getchar();
+    son = passetout(0.95,1000, son1, taille1);
 
     printf("Son filtre\n");
     getchar();
@@ -42,6 +42,7 @@ int main(int argc, char * argv[]) {
 
 
     /* Echo */
+    /*
     int taille;
     taille = taille1 * 1.5;
     double dureeEcho = 0.5;
@@ -65,4 +66,5 @@ int main(int argc, char * argv[]) {
     liberer_son(son1);
     if (f) SDL_PH_DestroyWindow(f);
     return EXIT_SUCCESS;
+    */
 }
