@@ -53,9 +53,7 @@ int main(int argc, char * argv[]) {
     liberer_son(son2);
 
     /* Ecouter un signal continuÂ : meme nombre dâ€™echantillons*/
-    son2 = allouer_son(nb_samples);
-    for(i=0; i<nb_samples; i++)
-        son2[i] = amplitude;
+    son2 = creer_sin(amplitude,nb_samples,440,fs);
     puts("Signal continu: tapez une touche");   getchar();
     /* Ecouter et visualiser le signal continu */
     if (f) {  SDL_PH_ClearWindow(f);

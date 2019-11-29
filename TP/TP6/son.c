@@ -37,7 +37,7 @@ char* inverser( char* son, int taille) {
     char * sonInverse;int i;
     sonInverse=allouer_son(taille);
     for(i=0; i<(taille);i++){
-      *(sonInverse+i)=-*(son +i);
+      *(sonInverse+i)=*(son +taille - i);
     }
     return sonInverse;
 }
@@ -53,16 +53,44 @@ char* modulation(double fe, double fmod, char* son, int taille) {
 }
 
 char* peigne_entier(double gain, int retard, char* son, int taille) {
-  /* A completer */
-  return NULL;
+  char * sortie;int i;
+  sortie = allouer_son(taille);
+  for(i=0; i<taille;i++) {
+      if ( i > retard ) {
+          *(sortie+i)=*(son+i)+gain*(*(son+i-retard));
+      }
+      else {
+          *(sortie+i)=*(son+i);
+      }
+  }
+  return sortie;
 }
 
 char* passetout(double gain, int retard, char* son, int taille) {
-  /* A completer */
-  return NULL;
+    char * sortie;int i;
+    sortie = allouer_son(taille);
+    for(i=0; i<taille;i++) {
+        if ( i > retard ) {
+            *(sortie+i)=-gain*(*(son+i))+*(son+i-retard)+gain*(*(sortie+i-retard));
+        }
+        else {
+            *(sortie+i)=-gain*(*(son+i));
+        }
+    }
+    return sortie;
+
 }
 
 int echo( char* son, int taille, int fs, float dureeEchoSec, float attenuation, int tailleSonFinal,  char ** pson) {
-  /* A completer */
-  return NULL;
+    int i=0;
+    int retard = dureeEchoSec*fs;
+    for ( i=0; i < taille; i++) {
+      pson=allouer_son(tailleSonFinal);
+      if ( i > retard ) {
+          *(pson[i]+i)=*(son+i)+(char)(*(son+i-retard)*attenuation);
+      }
+      else {
+          *(pson[i]+i)=*(son+i);
+      }
+    }
 }
