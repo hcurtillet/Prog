@@ -1,9 +1,14 @@
-typedef struct coordonnee{
-  double x;
-  double y;
+typedef struct coordonnees{
+  int x;
+  int y;
 } T_coordonnees;
 
-void fractale(T_coordonnees ma, T_coordonnees mb,int n);
+typedef struct couple{
+  T_coordonnees c1;
+  T_coordonnees c2;
+} T_couple;
+
+void fractale(T_coordonnees ma, T_coordonnees mb, int n, T_couple* couple );
 
 #define R 2/(1+sqrt(5))
 #define COS cos(M_PI/4)
