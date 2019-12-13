@@ -9,13 +9,15 @@ int main() {
   printf("Saisir la valeur de profondeur n voulu:\n");
   scanf("%d",&n);
   getchar();
-  unsigned int couleur ;
+  unsigned int couleur[5] ;
   SDL_PHWindow* f1=NULL;
   f1=SDL_PH_CreateWindow(1000,1000) ;
   if ( f1== NULL) { printf("Erreur SDL\n"); exit(EXIT_FAILURE);  }
-  couleur=SDL_PH_RED ;
-
-
+  couleur[0]=SDL_PH_RED;
+  couleur[1]=SDL_PH_CYAN;
+  couleur[2]=SDL_PH_GREEN;
+  couleur[3]=SDL_PH_BLACK;
+  couleur[4]=SDL_PH_YELLOW;
   T_coordonnees ma={500,0},mb = { 500, 250 };
   nbCouple=calcNbCouple(n);
   T_couple listeCoupe[nbCouple];
@@ -29,7 +31,8 @@ int main() {
   couple = listeCoupe;
   fractale(ma, mb, n, couple);
   for ( i = 0 ; i < nbCouple; i++ ) {
-    lineColor(f1->rendu,(*(listeCoupe+i)).c1.x , (*(listeCoupe+i)).c1.y, (*(listeCoupe+i)).c2.x, (*(listeCoupe+i)).c2.y,couleur);
+    unsigned int couleurChoisi=couleur[i%5];
+    lineColor(f1->rendu,(*(listeCoupe+i)).c1.x , (*(listeCoupe+i)).c1.y, (*(listeCoupe+i)).c2.x, (*(listeCoupe+i)).c2.y,couleurChoisi);
   }
   SDL_PH_FlushWindow(f1);
   puts("Taper une touche pour continuer") ; getchar() ;
