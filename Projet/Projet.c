@@ -28,13 +28,10 @@ unsigned char ** lectureImagePgmBinaire (char* fic, int* pnbl, int* pnbc){
   char str[512];
   fp = fopen(fic,"rb");
   if (fp == NULL) puts("Ouverture impossible");
+  fscanf(fp,"%[^\n]\n",str);
   fgets(str,511,fp);
-  printf("%s\n",str);
-  fgets(str,511,fp);
-  printf("%s\n",str);
-  int nbligne, nbcol,inten;
   fscanf(fp,"%d %d %d\n",pnbc,pnbl,intensite);
-  printf("%d %d %d\n", *pnbc,*pnbl,*intensite);
+  if ( *intensite < 0 || *intensite > 255 ) { puts("Intensité non renconnue !");}
   unsigned char ** image;
   image=alloueImage(*pnbl,*pnbc);
   for(i=0;i<*pnbl;i++){
@@ -51,7 +48,6 @@ void sauvegardeImagePgmBinaire(char* fic, unsigned char** im, int nbl, int nbc){
      int i,j;
      fp = fopen(fic,"wb");
      if (fp == NULL) puts("Ouverture impossible");
-     printf("on écrit");
      fprintf(fp, "%s\n", "P5");
      fprintf(fp,"%d %d\n%d\n", nbc,nbl,255);
      for(i=0;i<nbl;i++){
