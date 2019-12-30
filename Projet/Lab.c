@@ -6,8 +6,15 @@
 unsigned char ** alloueImage(int nligne, int ncol) {
   unsigned char i,j; unsigned char **p ;
   p = calloc(nligne,sizeof(*p));
+  if (p == NULL ) {
+      printf("Impossible d'allouer de la mémoire dès le début\n");
+  }
   for (i = 0; i < nligne; i++) {
         p[i] = calloc(ncol,sizeof (**p));
+        if (p[i]==NULL) {
+            printf("Impossible d'allouer de la mémoire à i=%d\n",i);
+            exit(-1);
+        }
   }
   return p;
 }
@@ -21,19 +28,20 @@ void libereImage (unsigned char ** im, int nligne) {
 }
 
 unsigned char ** lectureImagePgmBinaire (char* fic, int* pnbl, int* pnbc){
-
   FILE* fp;
   int i,j;
-  int  *intensite;
+  int  intensite;
   char str[512];
   fp = fopen(fic,"rb");
   if (fp == NULL) puts("Ouverture impossible");
   fscanf(fp,"%[^\n]\n",str);
   fgets(str,511,fp);
-  fscanf(fp,"%d %d %d\n",pnbc,pnbl,intensite);
-  if ( *intensite < 0 || *intensite > 255 ) { puts("Intensité non renconnue !");}
+  fscanf(fp,"%d %d %d\n",pnbc,pnbl,&intensite);
+  if ( intensite < 0 || intensite > 255 ) { puts("Intensité non renconnue !");}
   unsigned char ** image;
-  printf("On rentre");
+  printf("On rentre\n");
+  printf(" Taille: %d %d\n",*pnbl,*pnbc);
+  scanf("%d",&i);
   image=alloueImage(*pnbl,*pnbc);
   for(i=0;i<*pnbl;i++){
     for(j=0;j<*pnbc;j++){
@@ -89,7 +97,6 @@ int main() {
 int main(){
   int nbligne, nbcol;
   unsigned char ** image;
-  printf("Avant l'entrée");
-  image=lectureImagePgmBinaire("tourtest.pgm", &nbligne, &nbcol);
+  image=alloueImage(300,250);
 }
 /* ICI TOUTES LES FOLIES INFORMATIQUES SONT PERMISES */

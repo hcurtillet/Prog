@@ -1,1 +1,1 @@
-unsigned char H( unsigned char a, unsigned char b, double c);
+unsigned char H( double a, double b, double c);
