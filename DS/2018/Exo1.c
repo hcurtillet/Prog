@@ -3,10 +3,11 @@
 #include <math.h>
 
 double racine(double a, double eps){
+    if (a==0){ return 0;}
     double x,y;
     x=a;
     y=(x+a/x)/2;
-    while ( fabs(x - y ) > eps){
+    while ( abs(x - y ) > eps){
         x=y;
         y=(x+a/x)/2;
     }
